@@ -1,23 +1,8 @@
-LAMon Android Agent Service
+SLAMon Android Agent Service
 
 ## In general
 
 Android Agent Service is a background service that ask for tasks from AFM and executes them.
-
-## Add SLAMon as dependency
-
-Currently the SLAMon project needs to be cloned and the project explicitly included. Using gradle the settings.gradle
-would look like this
-
-```gradle
-rootProject.name = 'My SLAMon Project'
-
-include ':android:slamon-android'
-project(':android:slamon-android').projectDir = new File(settingsDir, 'path/to/SLAMon/android/slamon-android')
-
-include ':java:slamon-lib'
-project(':java:slamon-lib').projectDir = new File(settingsDir, 'path/to/SLAMon/java/slamon-lib')
-```
 
 ## Required manifest tags
 
