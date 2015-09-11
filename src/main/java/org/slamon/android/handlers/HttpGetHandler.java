@@ -20,14 +20,19 @@ public class HttpGetHandler extends TaskHandler {
             throw new IllegalArgumentException("No url parameter found");
         }
 
-        HttpRequest request = requestFactory.buildGetRequest(new GenericUrl(url));
+        HttpRequest request = requestFactory.buildRequest(HttpMethods.GET, new GenericUrl(url), null);
 
         Map<String, Object> result = new HashMap<>();
+        HttpResponse response = null;
         try {
-            HttpResponse response = request.execute();
+            response = request.execute();
             result.put("status", response.getStatusCode());
         } catch (HttpResponseException e) {
             result.put("status", e.getStatusCode());
+        } finally {
+            if (response != null) {
+                response.disconnect();
+            }
         }
 
         return result;

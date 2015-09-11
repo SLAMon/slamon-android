@@ -71,8 +71,8 @@ public class HttpGetHandlerTest {
         }.createRequestFactory();
         Map<String, Object> map = new HashMap<>();
         map.put("url", "http://url.to.be.tested");
-        expectedException.expect(HttpResponseException.class);
         Map<String, Object> result = handler.execute(map);
+        assertEquals(500, result.get("status"));
     }
 
     @Test
