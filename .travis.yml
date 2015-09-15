@@ -1,6 +1,9 @@
 language: android
 jdk:
 - oraclejdk8
+cache:
+  directories:
+  - "$HOME/.gradle"
 android:
   components:
   - build-tools-22.0.0
@@ -8,6 +11,8 @@ android:
   - extra-google-m2repository
   - extra-android-m2repository
   - extra-android-support
+before_script: "./gradlew assemble"
+script: "./gradlew check"
 after_success: "./release.sh"
 env:
   global:
